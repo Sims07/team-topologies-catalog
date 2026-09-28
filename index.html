@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Team Topologies — Architecture Catalog</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="top-inner">
+    <div class="brand"><span class="mark">TT</span><div><strong>Team Topologies</strong><small>Catalogue de référence pour l’architecture</small></div></div>
+    <input id="search" type="search" placeholder="Rechercher un concept, tag, terme...">
+  </div>
+</header>
+<nav class="nav" id="filters"></nav>
+<main>
+  <div class="intro">
+    <div><h1>Team Topologies</h1><p>Catalogue des concepts, types d’équipes et modes d’interaction pour concevoir des organisations et des architectures capables d’évoluer.</p></div>
+    <span id="count"></span>
+  </div>
+  <section id="cards" class="cards"></section>
+</main>
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="backdrop"></div>
+  <article class="modal-card"><button id="close" class="close">×</button><div id="modal-content"></div></article>
+</div>
+<footer><span>Team Topologies · Architecture Catalog</span><span>Catalogue de référence</span></footer>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,389 @@
+{
+  "concepts": [
+    {
+      "id": "stream-aligned-team",
+      "name": "Stream-aligned Team",
+      "category": "team-type",
+      "summary": "Équipe alignée sur un flux de valeur continu et responsable de livrer un résultat de bout en bout.",
+      "problem": "Comment organiser une équipe pour qu’elle puisse faire évoluer et exploiter une partie cohérente du système sans dépendre en permanence d’autres équipes ?",
+      "solution": "Aligner l’équipe sur un flux de travail — par exemple un produit, un service, une capacité métier ou un parcours — avec les compétences nécessaires pour livrer de la valeur de bout en bout.",
+      "details": "Le Stream-aligned Team constitue le point focal de la livraison de valeur. Les autres types d’équipes existent notamment pour augmenter son autonomie et réduire sa charge cognitive. Une équipe de ce type doit pouvoir faire évoluer, tester, déployer et opérer ce dont elle a la responsabilité.",
+      "questions": [
+        "Quel flux de travail ou domaine cette équipe sert-elle ?",
+        "Dispose-t-elle des compétences nécessaires pour livrer de bout en bout ?",
+        "Quelles dépendances externes limitent son autonomie ?"
+      ],
+      "tags": [
+        "#TeamType",
+        "#ValueStream",
+        "#Flow",
+        "#Autonomy"
+      ],
+      "related": [
+        "platform-team",
+        "enabling-team",
+        "cognitive-load"
+      ]
+    },
+    {
+      "id": "platform-team",
+      "name": "Platform Team",
+      "category": "team-type",
+      "summary": "Équipe qui fournit une plateforme interne consommable comme un produit pour réduire la complexité technique des équipes de flux.",
+      "problem": "Comment éviter que chaque équipe doive maîtriser et maintenir elle-même toutes les capacités techniques nécessaires à la livraison ?",
+      "solution": "Fournir des capacités communes sous forme de services internes facilement consommables : infrastructure, CI/CD, observabilité, sécurité, runtime ou autres capacités transverses.",
+      "details": "Une Platform Team doit réduire la charge cognitive extrinsèque des équipes consommatrices. Elle est efficace lorsque son offre est conçue comme un produit interne avec une expérience de consommation claire et un minimum de coordination nécessaire.",
+      "questions": [
+        "Quelle complexité technique peut être masquée derrière un service ?",
+        "La capacité fournie est-elle réellement plus simple à consommer qu’à construire localement ?",
+        "Quelle expérience développeur et quel mode de consommation sont proposés ?"
+      ],
+      "tags": [
+        "#TeamType",
+        "#Platform",
+        "#SelfService",
+        "#CognitiveLoad"
+      ],
+      "related": [
+        "stream-aligned-team",
+        "x-as-a-service",
+        "cognitive-load"
+      ]
+    },
+    {
+      "id": "enabling-team",
+      "name": "Enabling Team",
+      "category": "team-type",
+      "summary": "Équipe spécialisée qui aide temporairement d’autres équipes à acquérir une capacité ou une connaissance qui leur manque.",
+      "problem": "Comment permettre à une équipe de devenir autonome lorsqu’une compétence nécessaire lui manque ?",
+      "solution": "Accompagner l’équipe concernée par du mentoring, du pairing, de la formation, de l’expertise ou de la facilitation, puis réduire l’interaction lorsque la capacité est acquise.",
+      "details": "L’Enabling Team ne devient pas propriétaire du travail de l’équipe accompagnée. Son objectif est de réduire une difficulté d’apprentissage ou une lacune de compétence et de permettre à l’équipe cible de poursuivre de façon autonome.",
+      "questions": [
+        "Quelle capacité manque réellement ?",
+        "L’équipe accompagnée pourra-t-elle ensuite fonctionner sans cette aide ?",
+        "L’intervention est-elle ciblée et limitée dans le temps ?"
+      ],
+      "tags": [
+        "#TeamType",
+        "#Enablement",
+        "#Learning",
+        "#Facilitation"
+      ],
+      "related": [
+        "facilitating",
+        "cognitive-load",
+        "stream-aligned-team"
+      ]
+    },
+    {
+      "id": "complicated-subsystem-team",
+      "name": "Complicated Subsystem Team",
+      "category": "team-type",
+      "summary": "Équipe spécialisée responsable d’un sous-système nécessitant une expertise approfondie difficile à maintenir dans une équipe de flux.",
+      "problem": "Comment traiter une partie particulièrement complexe du système sans faire porter toute cette expertise à l’équipe qui délivre le flux métier ?",
+      "solution": "Regrouper l’expertise spécialisée dans une équipe dédiée qui fournit le sous-système ou sa capacité aux autres équipes.",
+      "details": "Ce type d’équipe convient notamment lorsque le sous-système demande des connaissances spécialisées en mathématiques, calcul scientifique, machine learning ou dans une technologie très pointue. L’objectif est de maîtriser une complexité particulière sans surcharger les équipes de flux.",
+      "questions": [
+        "La complexité est-elle réellement spécialisée ?",
+        "Cette expertise doit-elle être maintenue en permanence ?",
+        "Quelle interface permet aux autres équipes de consommer le sous-système ?"
+      ],
+      "tags": [
+        "#TeamType",
+        "#Specialization",
+        "#Complexity",
+        "#Subsystem"
+      ],
+      "related": [
+        "cognitive-load",
+        "x-as-a-service",
+        "stream-aligned-team"
+      ]
+    },
+    {
+      "id": "collaboration",
+      "name": "Collaboration",
+      "category": "interaction",
+      "summary": "Deux équipes travaillent étroitement ensemble pendant une période définie pour explorer, apprendre ou construire quelque chose de nouveau.",
+      "problem": "Comment travailler efficacement lorsqu’une solution, une frontière ou une manière de faire n’est pas encore suffisamment connue ?",
+      "solution": "Autoriser une interaction à forte intensité pendant une période limitée, avec un objectif d’apprentissage ou de découverte explicite.",
+      "details": "La Collaboration est adaptée aux situations où l’incertitude est élevée : découverte d’une API, d’une technologie, d’une pratique ou d’une frontière entre équipes. Une collaboration qui devient permanente est un signal qu’un autre mode d’interaction ou une nouvelle organisation peut être nécessaire.",
+      "questions": [
+        "Qu’est-ce que les équipes cherchent à découvrir ?",
+        "Quelle est la durée ou le critère de sortie de la collaboration ?",
+        "La collaboration peut-elle évoluer vers une relation de service plus claire ?"
+      ],
+      "tags": [
+        "#Interaction",
+        "#Discovery",
+        "#Learning",
+        "#Temporary"
+      ],
+      "related": [
+        "x-as-a-service",
+        "facilitating",
+        "topology-evolution"
+      ]
+    },
+    {
+      "id": "x-as-a-service",
+      "name": "X-as-a-Service",
+      "category": "interaction",
+      "summary": "Une équipe fournit une capacité clairement définie qu’une autre équipe consomme avec peu de collaboration directe.",
+      "problem": "Comment permettre à une équipe de bénéficier d’une capacité externe sans créer une dépendance quotidienne entre les personnes ?",
+      "solution": "Exposer la capacité comme un service avec une interface, une documentation, une expérience de consommation et des attentes explicites.",
+      "details": "X-as-a-Service favorise des frontières claires entre fournisseur et consommateur. Le service peut être une plateforme, une API, un composant ou une autre capacité. La qualité de l’expérience de consommation conditionne directement la réduction de charge cognitive recherchée.",
+      "questions": [
+        "Qui possède la capacité ?",
+        "Comment la consommer sans solliciter constamment l’équipe fournisseuse ?",
+        "L'interface et la documentation sont-elles suffisamment claires ?"
+      ],
+      "tags": [
+        "#Interaction",
+        "#Service",
+        "#API",
+        "#SelfService"
+      ],
+      "related": [
+        "platform-team",
+        "team-api",
+        "collaboration"
+      ]
+    },
+    {
+      "id": "facilitating",
+      "name": "Facilitating",
+      "category": "interaction",
+      "summary": "Une équipe aide une autre équipe à acquérir une compétence, une pratique ou une connaissance nécessaire.",
+      "problem": "Comment débloquer une équipe qui rencontre une difficulté de compétence sans lui transférer durablement la responsabilité ?",
+      "solution": "Fournir une aide ciblée — mentoring, coaching, pairing ou accompagnement — afin que l’équipe bénéficiaire puisse progressivement devenir autonome.",
+      "details": "Facilitating est particulièrement associé aux Enabling Teams. L’interaction porte sur l’apprentissage et la montée en capacité plutôt que sur la prise en charge du travail de l’équipe aidée.",
+      "questions": [
+        "Quelle capacité doit être transmise ?",
+        "Quel résultat permettra de constater que l’aide n’est plus nécessaire ?",
+        "L’équipe aidée conserve-t-elle la responsabilité de son domaine ?"
+      ],
+      "tags": [
+        "#Interaction",
+        "#Enablement",
+        "#Mentoring",
+        "#Learning"
+      ],
+      "related": [
+        "enabling-team",
+        "collaboration"
+      ]
+    },
+    {
+      "id": "cognitive-load",
+      "name": "Cognitive Load",
+      "category": "cognitive-load",
+      "summary": "La charge cognitive d’une équipe doit rester compatible avec sa capacité à comprendre, modifier, tester et opérer son périmètre.",
+      "problem": "Comment éviter qu’une équipe accumule tellement de responsabilités, technologies, processus et connaissances métier qu’elle ne puisse plus évoluer efficacement ?",
+      "solution": "Examiner séparément la complexité intrinsèque du domaine, les contraintes extrinsèques imposées par l’environnement et la connaissance nécessaire au métier, puis réduire ou redistribuer la charge lorsque nécessaire.",
+      "details": "La charge intrinsèque vient notamment de la complexité propre au domaine ou à la technologie. La charge extrinsèque provient de ce qui complique le travail sans constituer la valeur métier elle-même : outillage, infrastructure, CI/CD, tests, communication ou contraintes opérationnelles. La charge essentielle correspond à l’effort nécessaire pour comprendre le domaine et produire de la valeur.",
+      "questions": [
+        "Quelles responsabilités consomment la capacité cognitive de l’équipe ?",
+        "Quelle complexité peut être retirée, encapsulée ou fournie comme service ?",
+        "Le périmètre est-il suffisamment petit pour rester compréhensible par l’équipe ?"
+      ],
+      "tags": [
+        "#CognitiveLoad",
+        "#Complexity",
+        "#Boundaries",
+        "#Teams"
+      ],
+      "related": [
+        "platform-team",
+        "enabling-team",
+        "team-sized-architecture"
+      ]
+    },
+    {
+      "id": "team-api",
+      "name": "Team API",
+      "category": "architecture",
+      "summary": "L’interface d’une équipe comprend tout ce qui permet aux autres équipes de comprendre, consommer et utiliser ses capacités.",
+      "problem": "Comment rendre une équipe réellement consommable par les autres sans dépendre de communications informelles et répétitives ?",
+      "solution": "Considérer comme une API l’ensemble formé par les produits ou services exposés, la documentation, l’onboarding, les processus et les modes d’interaction avec l’équipe.",
+      "details": "Une Team API peut inclure du code, des API techniques, de la documentation, des procédures d’onboarding et des canaux de communication. Cette vision aide à rendre explicites les attentes entre équipes et à réduire les interactions inutiles.",
+      "questions": [
+        "Que doit savoir une équipe consommatrice pour utiliser notre capacité ?",
+        "Quelles informations sont documentées ?",
+        "Quel onboarding est nécessaire ?"
+      ],
+      "tags": [
+        "#Architecture",
+        "#TeamAPI",
+        "#Documentation",
+        "#Onboarding"
+      ],
+      "related": [
+        "x-as-a-service",
+        "platform-team"
+      ]
+    },
+    {
+      "id": "team-sized-architecture",
+      "name": "Team-sized Architecture",
+      "category": "architecture",
+      "summary": "Faire correspondre la taille et les frontières des systèmes avec la capacité cognitive et organisationnelle des équipes.",
+      "problem": "Comment éviter que l’architecture impose aux équipes des périmètres trop larges, trop complexes ou trop fortement couplés ?",
+      "solution": "Partir de la capacité des équipes et utiliser celle-ci comme contrainte de conception pour définir des frontières de systèmes et de responsabilités soutenables.",
+      "details": "Cette approche déplace le point de départ de l’architecture : au lieu de raisonner uniquement à partir de la technologie, on considère d’abord les personnes, leurs responsabilités, leur charge cognitive et leurs interactions. Les frontières techniques doivent rester compatibles avec la capacité des équipes qui les portent.",
+      "questions": [
+        "Quelle équipe peut comprendre et faire évoluer ce périmètre ?",
+        "Les frontières techniques créent-elles des dépendances entre équipes ?",
+        "La structure actuelle reste-t-elle soutenable lorsque le système grandit ?"
+      ],
+      "tags": [
+        "#Architecture",
+        "#Boundaries",
+        "#CognitiveLoad",
+        "#Organization"
+      ],
+      "related": [
+        "cognitive-load",
+        "conways-law",
+        "stream-aligned-team"
+      ]
+    },
+    {
+      "id": "conways-law",
+      "name": "Conway’s Law",
+      "category": "architecture",
+      "summary": "Les systèmes tendent à refléter les structures de communication des organisations qui les conçoivent.",
+      "problem": "Pourquoi des architectures et des dépendances techniques finissent-elles souvent par reproduire les frontières organisationnelles ?",
+      "solution": "Prendre explicitement en compte les chemins de communication entre équipes lors de la conception des frontières et des interactions du système.",
+      "details": "La loi de Conway est utile comme grille de lecture : les structures de communication influencent les structures des systèmes. Elle invite l’architecte à examiner conjointement les responsabilités, les équipes et les interfaces techniques plutôt que de considérer l’architecture comme indépendante de l’organisation.",
+      "questions": [
+        "Quelles équipes doivent communiquer pour modifier cette partie du système ?",
+        "Les frontières techniques reflètent-elles une frontière de responsabilité claire ?",
+        "Une dépendance organisationnelle est-elle devenue une dépendance technique ?"
+      ],
+      "tags": [
+        "#Architecture",
+        "#Conway",
+        "#Communication",
+        "#Boundaries"
+      ],
+      "related": [
+        "team-sized-architecture",
+        "topology-evolution"
+      ]
+    },
+    {
+      "id": "topology-evolution",
+      "name": "Evolution des topologies",
+      "category": "evolution",
+      "summary": "Les équipes et leurs interactions évoluent avec le contexte, le produit, la charge et les contraintes de livraison.",
+      "problem": "Comment éviter de figer une organisation alors que les besoins du système et des équipes changent ?",
+      "solution": "Observer les signaux de friction et faire évoluer les types d’équipes, leurs responsabilités ou leurs modes d’interaction lorsque le contexte le justifie.",
+      "details": "Une relation peut par exemple commencer en Collaboration pendant une phase de découverte puis évoluer vers X-as-a-Service lorsque les frontières et les responsabilités deviennent suffisamment claires. L’évolution est continue plutôt qu’un état final figé.",
+      "questions": [
+        "Une équipe devient-elle un goulot d’étranglement ?",
+        "Le travail en cours ou le délai de livraison augmente-t-il ?",
+        "Des responsabilités restent-elles concentrées sur une seule équipe ?",
+        "Une collaboration devenue permanente devrait-elle être transformée ?"
+      ],
+      "tags": [
+        "#Evolution",
+        "#Flow",
+        "#Interactions",
+        "#Organization"
+      ],
+      "related": [
+        "collaboration",
+        "x-as-a-service",
+        "team-api"
+      ]
+    },
+    {
+      "id": "architecture-starting-point",
+      "name": "Partir des équipes",
+      "category": "architecture",
+      "summary": "Utiliser les capacités et contraintes des équipes comme un point de départ pour raisonner sur les frontières du système.",
+      "problem": "Comment décider entre monolithe, modularisation ou services sans réduire la décision à un choix technologique ?",
+      "solution": "Examiner d’abord la capacité de l’équipe, sa charge cognitive, les responsabilités qu’elle peut réellement porter et les dépendances que l’architecture introduirait.",
+      "details": "La question n’est pas simplement « monolithe ou microservices ? ». La granularité d’un système doit rester compatible avec les équipes capables de le construire, de le maintenir et de l’exploiter. Une modularisation interne peut être une étape utile lorsque les équipes ou les ressources ne justifient pas encore une distribution physique.",
+      "questions": [
+        "Combien d’équipes peuvent réellement travailler de façon autonome ?",
+        "Quelles frontières métier ou techniques sont déjà stables ?",
+        "Quel découpage réduit réellement les dépendances ?"
+      ],
+      "tags": [
+        "#Architecture",
+        "#Modularity",
+        "#Microservices",
+        "#Teams"
+      ],
+      "related": [
+        "team-sized-architecture",
+        "cognitive-load",
+        "stream-aligned-team"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scenario-modular-monolith",
+      "name": "Modulithe et évolution progressive",
+      "category": "scenario",
+      "summary": "Commencer avec un système modulaire lorsque le contexte ne justifie pas encore une distribution en services.",
+      "problem": "Les ressources humaines ou la maturité organisationnelle ne permettent pas encore de multiplier les services et les équipes.",
+      "solution": "Structurer le système en bounded contexts et modules cohérents, puis faire évoluer la distribution lorsque les équipes et les responsabilités deviennent suffisamment autonomes.",
+      "details": "Cette trajectoire permet de faire évoluer les frontières logiques avant de multiplier les frontières de déploiement.",
+      "tags": [
+        "#Scenario",
+        "#Modulithe",
+        "#BoundedContext",
+        "#Evolution"
+      ],
+      "related": [
+        "team-sized-architecture",
+        "topology-evolution",
+        "stream-aligned-team"
+      ]
+    },
+    {
+      "id": "scenario-platform",
+      "name": "Introduire une Platform Team",
+      "category": "scenario",
+      "summary": "Centraliser une capacité technique complexe lorsque sa répétition surcharge plusieurs équipes de flux.",
+      "problem": "Plusieurs équipes doivent chacune gérer la même infrastructure ou les mêmes capacités transverses.",
+      "solution": "Identifier une capacité commune, la transformer en produit interne et l’exposer comme un service consommable.",
+      "details": "La plateforme doit réduire la charge cognitive des équipes clientes et non devenir un nouveau point de passage obligatoire pour chaque changement.",
+      "tags": [
+        "#Scenario",
+        "#Platform",
+        "#SelfService",
+        "#CognitiveLoad"
+      ],
+      "related": [
+        "platform-team",
+        "x-as-a-service",
+        "cognitive-load"
+      ]
+    },
+    {
+      "id": "scenario-enabling",
+      "name": "Combler un manque de compétence",
+      "category": "scenario",
+      "summary": "Utiliser une Enabling Team pour transférer une capacité plutôt que créer une dépendance durable.",
+      "problem": "Une équipe de flux possède la responsabilité du domaine mais ne maîtrise pas encore une compétence nécessaire.",
+      "solution": "Mettre en place un accompagnement ciblé, puis retirer progressivement l’aide lorsque la compétence est intégrée dans l’équipe.",
+      "details": "Le succès se mesure à l’autonomie acquise par l’équipe bénéficiaire, pas au volume de travail réalisé par l’équipe facilitatrice.",
+      "tags": [
+        "#Scenario",
+        "#Enabling",
+        "#Learning",
+        "#Autonomy"
+      ],
+      "related": [
+        "enabling-team",
+        "facilitating",
+        "cognitive-load"
+      ]
+    }
+  ]
+}
