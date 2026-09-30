@@ -226,7 +226,7 @@ function diagram(x) {
 
   if (id === "topology-evolution") return svg(
     `${teamNode(8,48,82,42,"Stream-aligned","état 1","stream")}${flow(90,69,126,69)}
-     ${interactionState(126,51,"Collaboration","hatch")}${flow(202,69,236,69)}
+     ${interactionState(126,51,"Collaboration",sid)}${flow(202,69,236,69)}
      ${teamNode(236,48,82,42,"Stream-aligned","état 2","stream")}
      ${text(164,38,"signal de friction","caption")}${text(180,119,"les modes d’interaction et responsabilités évoluent avec le contexte","caption")}`, "Evolution des topologies");
 
@@ -266,8 +266,8 @@ function apiPill(x,y,label) {
 function moduleNode(x,y,label) {
   return `<rect x="${x}" y="${y}" width="58" height="34" rx="5" class="module"/><text x="${x+29}" y="${y+21}" text-anchor="middle" class="label">${label}</text>`;
 }
-function interactionState(x,y,label,pattern) {
-  const fill = pattern === "hatch" ? `url(#hatch-${safeId(label)})` : "none";
+function interactionState(x,y,label,sid) {
+  const fill = `url(#hatch-${sid})`;
   return `<rect x="${x}" y="${y}" width="76" height="36" rx="18" class="interaction-state" fill="${fill}"/><text x="${x+38}" y="${y+22}" text-anchor="middle" class="label">${label}</text>`;
 }
 function box(x, y, w, h, title, sub, kind = "team") {
