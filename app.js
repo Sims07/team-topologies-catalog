@@ -148,26 +148,128 @@ function interactionOverlap(x1, y, x2, mode, sid) {
 function diagram(x) {
   const id = x.id;
   const sid = safeId(id);
+  const flow = (a,b,c,d,dashed=false) => teamFlow(a,b,c,d,dashed);
 
-  if (id === "stream-aligned-team") return svg(`${text(38,18,"Flux de valeur","caption")}${teamNode(96,42,168,46,"Stream-aligned","team","stream")}${teamFlow(78,65,112,65)}${teamFlow(248,65,282,65)}${text(42,86,"besoin","label")}${text(318,86,"valeur livrée","label")}${text(180,119,"responsabilité de bout en bout","caption")}`, "Stream-aligned Team");
-  if (id === "enabling-team") return svg(`${teamNode(42,25,56,82,"Enabling","team","enabling")}${teamFlow(98,66,150,66,true)}${teamNode(140,47,160,46,"Stream-aligned","team","stream")}${text(124,49,"aide ciblée","caption")}${text(124,94,"puis retrait","caption")}${text(180,119,"transfert de compétence vers l’équipe de flux","caption")}`, "Enabling Team");
-  if (id === "complicated-subsystem-team") return svg(`${teamNode(8,48,112,42,"Stream-aligned","team","stream")}${teamFlow(120,69,135,69)}${teamNode(135,30,92,78,"Complicated","subsystem","complicated")}${teamFlow(227,68,260,68)}${text(304,58,"capacité","label")}${text(304,73,"spécialisée","label")}${text(180,119,"expertise complexe encapsulée","caption")}`, "Complicated Subsystem Team");
-  if (id === "platform-team") return svg(`${teamNode(8,50,112,42,"Stream-aligned","team","stream")}${teamFlow(120,71,130,71)}${teamNode(130,47,150,48,"Platform","team","platform")}${teamFlow(280,71,292,71)}${text(304,59,"self-service","label")}${text(304,74,"capacité","label")}${text(180,119,"réduit la complexité pour les équipes clientes","caption")}`, "Platform Team");
-  if (id === "collaboration") return svg(`${interactionOverlap(125,34,235,"collaboration",sid)}${text(180,89,"Collaboration","mini-title")}${text(180,112,"travail étroit · exploration · durée limitée","caption")}`, "Collaboration");
-  if (id === "x-as-a-service") return svg(`<circle cx="105" cy="58" r="38" class="interaction-a"/><circle cx="255" cy="58" r="38" class="interaction-b"/><path d="M150 45 C158 45 158 45 158 58 C158 71 158 71 150 71" class="service-bracket"/><path d="M210 45 C202 45 202 45 202 58 C202 71 202 71 210 71" class="service-bracket"/>${text(180,92,"X-as-a-Service","mini-title")}${text(180,114,"interface claire · faible coordination directe","caption")}`, "X-as-a-Service");
-  if (id === "facilitating") return svg(`${interactionOverlap(125,34,235,"facilitating",sid)}${text(180,89,"Facilitating","mini-title")}${text(180,112,"apprentissage · transfert de compétence","caption")}`, "Facilitating");
-  if (id === "cognitive-load") return svg(`${teamNode(8,38,92,54,"Stream-aligned","team","stream")}${teamFlow(100,65,132,65)}${teamNode(124,18,108,28,"Platform","réduit","platform")}${teamNode(132,50,72,30,"Enabling","apprend","enabling")}${teamNode(132,82,72,30,"Subsystem","encapsule","complicated")}${teamFlow(204,33,254,33)}${teamFlow(204,65,254,65)}${teamFlow(204,97,254,97)}${text(302,58,"charge","label")}${text(302,73,"cognitive","label")}${text(180,119,"réduire, redistribuer ou encapsuler la charge","caption")}`, "Cognitive Load");
-  if (id === "team-api") return svg(`${teamNode(10,41,92,50,"Stream-aligned","team","stream")}${teamFlow(102,66,132,66)}<rect x="132" y="20" width="218" height="90" rx="8" class="boundary"/>${text(241,38,"Team API","mini-title")}${text(164,60,"Code","label")}${text(211,60,"Docs","label")}${text(260,60,"Onboarding","label")}${text(319,60,"Interactions","label")}${text(241,90,"tout ce qui permet à une autre équipe de consommer la capacité","caption")}`, "Team API");
-  if (id === "team-sized-architecture") return svg(`<rect x="92" y="20" width="176" height="88" rx="10" class="boundary"/>${text(180,36,"Frontière du système","caption")}${teamNode(116,49,128,44,"Stream-aligned","responsabilité","stream")}${text(180,122,"frontière compatible avec la capacité de l’équipe","caption")}`, "Team-sized Architecture");
-  if (id === "conways-law") return svg(`${text(82,18,"Organisation","caption")}${teamNode(18,28,62,34,"A","team","stream")}${teamNode(92,28,62,34,"B","team","stream")}${teamNode(55,78,62,34,"C","team","stream")}${teamFlow(80,45,92,45)}${teamFlow(122,62,86,78,true)}${text(276,18,"Système","caption")}<rect x="210" y="27" width="66" height="36" rx="5" class="module"/><rect x="286" y="27" width="66" height="36" rx="5" class="module"/><rect x="248" y="77" width="66" height="36" rx="5" class="module"/>${text(243,50,"A","label")}${text(319,50,"B","label")}${text(281,100,"C","label")}${teamFlow(276,45,286,45)}${teamFlow(319,63,282,77,true)}${text(180,123,"les structures de communication influencent les structures du système","caption")}`, "Conway’s Law");
-  if (id === "topology-evolution") return svg(`${teamNode(8,43,92,50,"Stream-aligned","aujourd’hui","stream")}${teamFlow(100,68,139,68)}${text(180,55,"friction","mini-title")}${text(180,76,"signal","caption")}${teamFlow(221,68,260,68)}${teamNode(260,43,92,50,"Stream-aligned","évolution","stream")}${text(180,18,"évolution continue des topologies","caption")}${text(180,119,"responsabilités, équipes et interactions peuvent changer","caption")}`, "Evolution des topologies");
-  if (id === "architecture-starting-point") return svg(`${teamNode(8,42,92,52,"Stream-aligned","capacité + charge","stream")}${teamFlow(100,68,136,68)}${box(136,34,88,68,"Frontières","responsabilités","accent")}${teamFlow(224,68,262,68)}${box(262,42,90,52,"Architecture","module / service")}${text(180,18,"raisonner des équipes vers le système","caption")}${text(180,119,"plutôt que choisir d’abord une technologie","caption")}`, "Partir des équipes");
-  if (id === "scenario-modular-monolith") return svg(`${teamNode(8,45,88,48,"Stream-aligned","équipes","stream")}${teamFlow(96,69,132,69)}${box(132,34,96,70,"Modulithe","frontières logiques","accent")}${teamFlow(228,69,264,69)}${box(264,45,88,48,"Services","si justifié")}${text(180,18,"distribution progressive","caption")}${text(180,119,"les frontières logiques précèdent les frontières de déploiement","caption")}`, "Modulithe et évolution progressive");
-  if (id === "scenario-platform") return svg(`${teamNode(8,28,76,42,"Stream-aligned","A","stream")}${teamNode(8,79,76,42,"Stream-aligned","B","stream")}${teamFlow(84,49,128,60)}${teamFlow(84,100,128,80)}${teamNode(128,34,96,70,"Platform","team","platform")}${teamFlow(224,69,272,69)}${text(312,62,"self-","label")}${text(312,76,"service","label")}${text(180,18,"une capacité commune devient un produit interne","caption")}`, "Introduire une Platform Team");
-  if (id === "scenario-enabling") return svg(`${teamNode(8,45,94,48,"Stream-aligned","team","stream")}${teamFlow(102,69,150,69,true)}${teamNode(150,35,62,78,"Enabling","team","enabling")}${teamFlow(212,69,270,69,true)}${teamNode(270,45,82,48,"Stream-aligned","autonome","stream")}${text(180,18,"compétence manquante → compétence intégrée","caption")}${text(180,119,"l’aide diminue lorsque l’autonomie augmente","caption")}`, "Combler un manque de compétence");
-  return svg(`${teamNode(24,43,90,48,"Stream-aligned","contexte","stream")}${teamFlow(114,67,154,67)}${box(154,35,72,64,"Décision","évolution","accent")}${teamFlow(226,67,266,67)}${box(266,43,70,48,"Cible","topologie")}`, "Concept");
+  if (id === "stream-aligned-team") return svg(
+    `${text(28,17,"Flux de valeur","caption")}${text(331,17,"Résultat","caption")}
+     ${flow(45,67,96,67)}${teamNode(96,43,168,48,"Stream-aligned","team","stream")}${flow(264,67,315,67)}
+     ${text(54,86,"besoin","label")}${text(306,86,"valeur livrée","label")}
+     ${text(180,120,"responsabilité de bout en bout sur un flux","caption")}`, "Stream-aligned Team");
+
+  if (id === "platform-team") return svg(
+    `${teamNode(8,25,92,40,"Stream-aligned","A","stream")}${teamNode(8,82,92,40,"Stream-aligned","B","stream")}
+     ${flow(100,45,132,61)}${flow(100,102,132,81)}
+     ${teamNode(132,45,96,60,"Platform","team","platform")}
+     ${flow(228,61,280,45)}${flow(228,89,280,102)}
+     ${text(316,48,"self-service","label")}${text(316,63,"capacité","label")}
+     ${text(180,18,"une capacité commune devient un produit interne","caption")}`, "Platform Team");
+
+  if (id === "enabling-team") return svg(
+    `${teamNode(8,49,116,42,"Stream-aligned","équipe cible","stream")}${flow(124,70,154,70,true)}
+     ${teamNode(154,27,62,86,"Enabling","team","enabling")}${flow(216,70,248,70,true)}
+     ${teamNode(248,49,104,42,"Stream-aligned","autonomie","stream")}
+     ${text(139,48,"apprentissage","caption")}${text(139,91,"aide ciblée","caption")}
+     ${text(180,122,"l’aide disparaît lorsque la capacité est acquise","caption")}`, "Enabling Team");
+
+  if (id === "complicated-subsystem-team") return svg(
+    `${teamNode(8,49,108,42,"Stream-aligned","équipe de flux","stream")}${flow(116,70,138,70)}
+     ${teamNode(138,29,88,82,"Complicated","subsystem","complicated")}${flow(226,70,254,70)}
+     ${text(304,58,"capacité","label")}${text(304,73,"spécialisée","label")}
+     ${text(180,122,"expertise rare encapsulée derrière une frontière claire","caption")}`, "Complicated Subsystem Team");
+
+  if (id === "collaboration") return svg(
+    `${interactionOverlap(125,29,235,"collaboration",sid)}
+     ${text(180,88,"Collaboration","mini-title")}
+     ${text(180,110,"explorer · apprendre · construire ensemble","caption")}
+     ${text(180,126,"forte intensité, généralement temporaire","caption")}`, "Collaboration");
+
+  if (id === "x-as-a-service") return svg(
+    `<circle cx="105" cy="60" r="38" class="interaction-a"/><circle cx="255" cy="60" r="38" class="interaction-b"/>
+     <path d="M150 47 C158 47 158 47 158 60 C158 73 158 73 150 73" class="service-bracket"/>
+     <path d="M210 47 C202 47 202 47 202 60 C202 73 202 73 210 73" class="service-bracket"/>
+     ${text(180,94,"X-as-a-Service","mini-title")}${text(180,113,"fournisseur → interface → consommateur","caption")}${text(180,128,"peu de coordination directe","caption")}`, "X-as-a-Service");
+
+  if (id === "facilitating") return svg(
+    `${interactionOverlap(125,29,235,"facilitating",sid)}
+     ${text(180,88,"Facilitating","mini-title")}
+     ${text(180,110,"mentoring · coaching · pairing","caption")}
+     ${text(180,126,"transfert de compétence vers l’équipe aidée","caption")}`, "Facilitating");
+
+  if (id === "cognitive-load") return svg(
+    `${teamNode(8,47,104,46,"Stream-aligned","responsabilité","stream")}
+     ${flow(112,70,140,70)}
+     ${conceptNode(140,23,76,30,"Platform","réduire")}${conceptNode(140,55,76,30,"Enabling","transférer")}${conceptNode(140,87,76,30,"Subsystem","encapsuler")}
+     ${flow(216,38,255,38)}${flow(216,70,255,70)}${flow(216,102,255,102)}
+     ${text(300,61,"charge","label")}${text(300,76,"cognitive","label")}
+     ${text(180,122,"réduire ce que l’équipe doit comprendre et maintenir","caption")}`, "Cognitive Load");
+
+  if (id === "team-api") return svg(
+    `${teamNode(8,47,104,46,"Stream-aligned","équipe","stream")}${flow(112,70,132,70)}
+     <rect x="132" y="20" width="220" height="100" rx="8" class="boundary"/>
+     ${text(242,38,"Team API","mini-title")}
+     ${apiPill(154,51,"Code / service")}${apiPill(224,51,"Docs")}${apiPill(278,51,"Onboarding")}
+     ${apiPill(154,80,"Interactions")}${apiPill(224,80,"Standards")}${apiPill(278,80,"Support")}
+     ${text(242,112,"tout ce qui rend l’équipe consommable","caption")}`, "Team API");
+
+  if (id === "team-sized-architecture") return svg(
+    `<rect x="86" y="22" width="188" height="88" rx="10" class="boundary"/>
+     ${text(180,38,"Frontière technique","caption")}
+     ${teamNode(108,53,144,42,"Stream-aligned","périmètre soutenable","stream")}
+     ${text(180,124,"une équipe doit pouvoir comprendre et faire évoluer son périmètre","caption")}`, "Team-sized Architecture");
+
+  if (id === "conways-law") return svg(
+    `${text(73,17,"Communication","caption")}${teamNode(12,30,58,34,"A","équipe","stream")}${teamNode(82,30,58,34,"B","équipe","stream")}${teamNode(47,80,58,34,"C","équipe","stream")}
+     ${flow(70,47,82,47)}${flow(111,64,83,80,true)}
+     ${text(286,17,"Architecture","caption")}${moduleNode(206,29,"A")}${moduleNode(282,29,"B")}${moduleNode(244,79,"C")}
+     ${flow(264,46,282,46)}${flow(320,64,278,79,true)}
+     ${text(180,122,"les structures de communication influencent les frontières du système","caption")}`, "Conway’s Law");
+
+  if (id === "topology-evolution") return svg(
+    `${teamNode(8,48,82,42,"Stream-aligned","état 1","stream")}${flow(90,69,126,69)}
+     ${interactionState(126,51,"Collaboration","hatch")}${flow(202,69,236,69)}
+     ${teamNode(236,48,82,42,"Stream-aligned","état 2","stream")}
+     ${text(164,38,"signal de friction","caption")}${text(180,119,"les modes d’interaction et responsabilités évoluent avec le contexte","caption")}`, "Evolution des topologies");
+
+  if (id === "architecture-starting-point") return svg(
+    `${teamNode(8,48,96,44,"Stream-aligned","capacité + charge","stream")}${flow(104,70,132,70)}
+     ${conceptNode(132,47,76,46,"Frontières","responsabilités")}${flow(208,70,236,70)}
+     ${conceptNode(236,47,104,46,"Architecture","modules / services")}
+     ${text(180,20,"partir des équipes","mini-title")}${text(180,122,"puis choisir une forme technique compatible avec leur capacité","caption")}`, "Partir des équipes");
+
+  if (id === "scenario-modular-monolith") return svg(
+    `${teamNode(8,49,88,42,"Stream-aligned","A + B","stream")}${flow(96,70,128,70)}
+     ${conceptNode(128,43,96,54,"Modulithe","frontières logiques")}${flow(224,70,258,70)}
+     ${conceptNode(258,49,94,42,"Services","si justifié")}
+     ${text(180,19,"frontières logiques → frontières de déploiement","caption")}${text(180,122,"distribuer seulement lorsque les équipes et responsabilités le justifient","caption")}`, "Modulithe et évolution progressive");
+
+  if (id === "scenario-platform") return svg(
+    `${teamNode(8,24,86,38,"Stream-aligned","A","stream")}${teamNode(8,79,86,38,"Stream-aligned","B","stream")}
+     ${flow(94,43,126,59)}${flow(94,98,126,80)}${teamNode(126,43,98,62,"Platform","team","platform")}
+     ${flow(224,74,264,74)}${text(302,66,"self-service","label")}${text(302,81,"capacité","label")}
+     ${text(180,18,"une capacité répétée devient un produit interne","caption")}`, "Introduire une Platform Team");
+
+  if (id === "scenario-enabling") return svg(
+    `${teamNode(8,49,92,42,"Stream-aligned","avant","stream")}${flow(100,70,142,70,true)}
+     ${teamNode(142,31,62,78,"Enabling","team","enabling")}${flow(204,70,246,70,true)}
+     ${teamNode(246,49,106,42,"Stream-aligned","après","stream")}
+     ${text(121,45,"manque","caption")}${text(121,91,"compétence","caption")}${text(180,122,"la capacité est intégrée dans l’équipe de flux","caption")}`, "Combler un manque de compétence");
+
+  return svg(`${teamNode(24,49,90,42,"Stream-aligned","contexte","stream")}${flow(114,70,154,70)}${conceptNode(154,47,72,46,"Décision","évolution")}${flow(226,70,266,70)}${conceptNode(266,49,70,42,"Cible","topologie")}`, "Concept");
 }
 
+function conceptNode(x,y,w,h,title,sub) {
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" class="concept-node"/><text x="${x+w/2}" y="${y+h/2-3}" text-anchor="middle" class="mini-title">${title}</text><text x="${x+w/2}" y="${y+h/2+11}" text-anchor="middle" class="label">${sub}</text>`;
+}
+function apiPill(x,y,label) {
+  return `<rect x="${x}" y="${y}" width="58" height="20" rx="5" class="api-pill"/><text x="${x+29}" y="${y+13}" text-anchor="middle" class="label">${label}</text>`;
+}
+function moduleNode(x,y,label) {
+  return `<rect x="${x}" y="${y}" width="58" height="34" rx="5" class="module"/><text x="${x+29}" y="${y+21}" text-anchor="middle" class="label">${label}</text>`;
+}
+function interactionState(x,y,label,pattern) {
+  const fill = pattern === "hatch" ? `url(#hatch-${safeId(label)})` : "none";
+  return `<rect x="${x}" y="${y}" width="76" height="36" rx="18" class="interaction-state" fill="${fill}"/><text x="${x+38}" y="${y+22}" text-anchor="middle" class="label">${label}</text>`;
+}
 function box(x, y, w, h, title, sub, kind = "team") {
   return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" class="node ${kind}"/>
     <text x="${x + w / 2}" y="${y + h / 2 - 5}" text-anchor="middle" class="mini-title">${title}</text>
